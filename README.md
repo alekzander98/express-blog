@@ -1,7 +1,7 @@
 ## Express+Sequelize搭建博客系统
 ****
 ### 依赖
-- express: 我们要用的服务端框架
+- express: 服务端框架
 - sequelize: 操作数据库的 orm
 - mysql2: 数据库驱动 // 未安装sequelize启动报错
 
