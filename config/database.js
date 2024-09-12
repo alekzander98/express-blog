@@ -1,3 +1,4 @@
+// 数据库配置
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
