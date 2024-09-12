@@ -1,6 +1,6 @@
 // 入口文件
 const express = require("express");
-const sequelize = require("./config/database");
+const sequelize = require("./models");
 
 const app = express();
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "startlocal": "export NODE_ENV=local && nodemon app.js"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,14 @@
+{
+  "application": {
+    "env": "local",
+    "name": "Express-Blog",
+    "version": "1.0.0"
+  },
+  "sequelize": {
+    "dialect": "mysql",
+    "host": "localhost",
+    "dbname": "blog",
+    "username": "root",
+    "password": "12345678"
+  }
+}
