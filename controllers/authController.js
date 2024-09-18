@@ -1,4 +1,7 @@
 const User = require('../models/User')
+const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+const SECRET = "qweasdzxc"
 
 // 注册
 async function register(req, res) {
@@ -15,8 +18,11 @@ async function register(req, res) {
       return res.status(400).json({ success: true, message: 'Exists' })
     }
 
+    // 密码加密处理
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     // 创建用户
-    await User.create({ username, password, nickname });
+    await User.create({ username, password: hashedPassword, nickname });
     return res.status(200).json({ success: true, message: 'Created' })
 
   } catch (error) {
@@ -39,16 +45,22 @@ async function login(req, res) {
     }
 
     // 密码匹配
-    const isPwdMatch = password === user.password;
+    const isPwdMatch = await bcrypt.compare(password, user.password);
     if(!isPwdMatch){
       return res.status(200).json({ success: false, message: 'Invalid username or password' });
     }
 
+    // 创建 token 访问令牌
+    const token = jwt.sign({ userId: user.id }, SECRET, {
+      expiresIn: "24h",
+    });
+
     return res.status(200).json({
       success: true,
       data: {
+        token,
         userId: user.id,
-        account: user.username, 
+        username: user.username,
         nickname: user.nickname,
       },
       message: '',
