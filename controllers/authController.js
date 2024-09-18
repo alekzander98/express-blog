@@ -34,7 +34,7 @@ async function register(req, res) {
 // 登录
 async function login(req, res) {
 
-  const { username, password, nickname } = req.body;
+  const { username, password } = req.body;
   // 登陆相关
   try {
 
